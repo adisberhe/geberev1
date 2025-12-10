@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="top-bar">
+                 <a href="searchProducts.html" class="logo">
+                    <span class="material-icons" style="margin-right: 0;">arrow_back</span>
+                </a>
+                <span class="logo">🌿 ነጋዴ</span>
+                <span class="material-icons header-icon">headset_mic</span>
+            </div>
+            <h1>ትዕዛዝ ይስጡ</h1>
+            <p class="english-title">Place Order</p>
+        </header>
+
+        <div class="background-content bg-merchant">
+            <div class="content-overlay orders-overlay">
+                <main class="order-placement-view">
+                    
+                    <div class="order-summary-card">
+                        <p class="product-name-amharic">ስንዴ / Wheat</p>
+                        <div class="product-info-grid">
+                            <p class="info-label">አቅራቢ:</p><p class="info-value">ገበሬ 101</p>
+                            <p class="info-label">ዋጋ/ኪ.ግ:</p><p class="info-value price-value">22 ብር</p>
+                        </div>
+                    </div>
+
+                    <form class="order-form">
+                        
+                        <div class="form-group location-group">
+                            <label for="order-location-map" class="location-label">የመላኪያ ቦታ / Delivery Location:</label>
+                            
+                            <div class="location-map-input">
+                                <span class="material-icons">location_on</span>
+                                <input type="text" id="order-location-display" placeholder="ካርታ ላይ ቦታ ይምረጡ / Select location on map" readonly required>
+                                <button type="button" class="btn-map-open" onclick="document.getElementById('mapModal').style.display='block'">ካርታ ክፈት</button>
+                            </div>
+                            
+                            <textarea id="order-location-details" rows="2" placeholder="ዝርዝር አድራሻ (ለምሳሌ: አዲስ አበባ፣ ቦሌ፣ ህንፃ ቁጥር...)"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="location-label">የክፍያ ዘዴ / Payment Method:</label>
+                            <div class="payment-options">
+                                <label class="payment-radio-label">
+                                    <input type="radio" name="payment_method" value="now" checked>
+                                    <span class="material-icons payment-icon">paid</span>
+                                    <span class="amharic-text">አሁን ይክፈሉ / Pay Now</span>
+                                </label>
+                                <label class="payment-radio-label">
+                                    <input type="radio" name="payment_method" value="later">
+                                    <span class="material-icons payment-icon">credit_score</span>
+                                    <span class="amharic-text">በኋላ ይክፈሉ / Pay Later</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="order-quantity" class="location-label">መጠን (ኪ.ግ) / Quantity (kg):</label>
+                            <input type="number" id="order-quantity" placeholder="ምሳሌ: 500" value="300" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="order-notes" class="location-label">ተጨማሪ ማስታወሻዎች / Additional Notes (Optional):</label>
+                            <textarea id="order-notes" rows="3" placeholder="ስለ ምርት ጥራት፣ አቅርቦት ጊዜ ወይም ሌላ መስፈርቶች..."></textarea>
+                        </div>
+
+                        <button type="submit" class="auth-button btn-place-order">ትዕዛዙን ያረጋግጡ</button>
+                    </form>
+                </main>
+            </div>
+        </div>
+
+        <div id="mapModal" class="modal">
+            <div class="modal-content map-modal-content">
+                <span class="close-btn" onclick="document.getElementById('mapModal').style.display='none'">&times;</span>
+                <h2 class="modal-title">ቦታ ይምረጡ / Select Location</h2>
+                
+                <div class="simulated-map-area">
+                    <p>***እዚህ ላይ ትክክለኛው የካርታ መተግበሪያ (Google Maps/Mapbox) ይከፈታል***</p>
+                    <p class="map-hint">ካርታውን በመጠቀም የመላኪያ ቦታዎን በትክክል ይምረጡ።</p>
+                    <div class="map-pin">
+                         <span class="material-icons">room</span>
+                         <p>የተመረጠ ቦታ:</p>
+                    </div>
+                </div>
+
+                <button type="button" class="auth-button" onclick="selectLocation()">ቦታውን አረጋግጥ</button>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="Merchant.html" class="nav-item">
+                <span class="material-icons">home</span>
+                <span class="amharic-textb">መነሻ</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <span class="material-icons">article</span>
+                <span class="amharic-textb">ትዕዛዞች</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-icons">local_shipping</span>
+                <span class="amharic-textb">መጓጓዣ</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-icons">person</span>
+                <span class="amharic-textb">አካውንት</span>
+            </a>
+            <a href="index.html" class="nav-item">
+                <span class="material-icons">exit_to_app</span>
+                <span class="amharic-textb">ውጣ </span>
+            </a>
+        </nav>
+    </div>
+    
+    <script>
+        // Function to simulate location selection from the map
+        function selectLocation() {
+            // 1. Close the modal
+            document.getElementById('mapModal').style.display='none';
+            // 2. Update the input field with a simulated address
+            document.getElementById('order-location-display').value = 'አዲስ አበባ፣ ፒያሳ (በካርታ ተመርጧል)';
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('mapModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

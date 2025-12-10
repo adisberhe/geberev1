@@ -8,19 +8,191 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    
+    <style>
+       
+        :root {
+            --color-dashboard-primary: #09420d;
+            --color-light-green: #6a994e;
+            --color-badge: #c44536;
+        }
+
+
+        .content-overlay.dashboard-overlay {
+
+            justify-content: flex-start; 
+
+            padding: 0; 
+            background-image: none;
+            background-color: transparent; 
+        }
+        
+        .dashboard-grid {
+            /* Adds back the necessary horizontal padding for the grid cards */
+            padding: 15px 15px; 
+            padding-bottom: 70px; /* Space for bottom navigation bar */
+            margin-top: 0; 
+        }
+
+        /* --- FARMER STORIES (INSTAGRAM-STYLE LISTING) - Optimized for small space and white background --- */
+        .stories-section {
+            padding: 8px 0 0 15px; /* Reduced vertical padding */
+            background-color: #fff; /* White Background as requested */
+            margin-bottom: 10px; /* Reduced margin */
+            width: 100%;
+            border-bottom: 1px solid #eee; /* Subtle separator at the bottom */
+        }
+
+        .stories-header {
+            font-size: 16px; /* Slightly smaller header */
+            font-weight: bold;
+            color: var(--color-dashboard-primary);
+            margin-bottom: 8px; /* Reduced margin */
+            padding-right: 15px; 
+        }
+
+        .stories-container {
+            display: flex;
+            overflow-x: scroll; /* Enable horizontal scrolling */
+            gap: 12px; /* Slightly smaller gap */
+            padding-bottom: 10px; 
+            /* Hide scrollbar for a cleaner look */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .stories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .farmer-story {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+            width: 65px; /* Slightly smaller width */
+        }
+
+        .story-ring {
+            width: 55px; /* Smaller avatar ring */
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--color-light-green); /* Thinner border */
+            padding: 2px; /* Less internal padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px; /* Reduced margin */
+            background-color: #fff;
+        }
+
+        .story-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #f0f0f0; /* Lighter placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            font-size: 24px; /* Smaller icon */
+            color: var(--color-dashboard-primary);
+        }
+
+        .story-name {
+            font-size: 11px; /* Smaller font */
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
         <header>
             <div class="top-bar">
                 <span class="logo">🌾 ገበሬ</span>
-                <span class="material-icons header-icon">headset_mic</span>
+                 <span class="material-icons header-icon">headset_mic</span>
             </div>
-            <h1>እንኳን ደህና መጣህ</h1>
+            <h4>እንኳን ደህና መጣህ</h4>
         </header>
 
         <div class="background-content bg-farmer">
             <div class="content-overlay dashboard-overlay">
+                
+                <div class="stories-section">
+                    <h2 class="stories-header">አቅራቢያ ያሉ ገበሬዎች (Farmers Nearby)</h2>
+                    <div class="stories-container">
+                        
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">አበበ (Abebe)</span>
+                        </a>
+
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">ፋጡማ (Fatuma)</span>
+                        </a>
+
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring" style="border-color: var(--color-badge);">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">ከበደ (Kebede)</span>
+                        </a>
+
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">አይተነፍሱ (Aytenefsu)</span>
+                        </a>
+
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">ገብረ (Gebre)</span>
+                        </a>
+
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">ሰላም (Selam)</span>
+                        </a>
+
+                        <a href="#" class="farmer-story">
+                            <div class="story-ring">
+                                <div class="story-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                            </div>
+                            <span class="story-name">ያሬድ (Yared)</span>
+                        </a>
+                        </div>
+                </div>
                 <main class="dashboard-grid">
 
                     <a href="myproducts.html" class="dashboard-card">
@@ -66,33 +238,12 @@
                         </div>
                     </a>
 
-                    <a href="#" class="dashboard-card">
-                        <div class="icon-text">
-                            <span class="material-icons">landscape</span>
-                            <div class="text-block">
-                                <p class="amharic-text">የሰብል አስተዳደር</p>
-                                <p class="english-text">Land/Crop Management</p>
-                                <span class="badge-soon">Coming soon</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="dashboard-card">
-                        <div class="icon-text">
-                            <span class="material-icons">headset_mic</span>
-                            <div class="text-block">
-                                <p class="amharic-text">ወኪል ያነጋግሩ</p>
-                                <p class="english-text">Contact Agent</p>
-                                <span class="badge-soon">Coming soon</span>
-                            </div>
-                        </div>
-                    </a>
+                    
                 </main>
             </div>
         </div>
-
-        <nav class="bottom-nav">
-            <a href="#" class="nav-item active">
+<nav class="bottom-nav">
+            <a href="Farmer.html" class="nav-item active">
                 <span class="material-icons">home</span>
                 <span class="amharic-textb">መነሻ</span>
             </a>
@@ -105,7 +256,7 @@
                 <span class="amharic-textb">ትዕዛዞች</span>
             </a>
             <a href="#" class="nav-item">
-                <span class="material-icons">person</span>
+                <span class="material-icons">phone</span>
                 <span class="amharic-textb">አካውንት</span>
             </a>
             <a href="index.html" class="nav-item">
@@ -113,6 +264,7 @@
                 <span class="amharic-textb">ውጣ</span>
             </a>
         </nav>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
