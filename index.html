@@ -17,9 +17,7 @@
             const roleSelect = document.getElementById('role');
             const selectedRole = roleSelect.value;
             
-            // In a real application, you would validate credentials here.
-            // If validation is successful, redirect based on the role.
-
+           
             if (selectedRole === 'farmer') {
                 window.location.href = 'farmer.html';
             } else if (selectedRole === 'merchant') {
@@ -54,19 +52,20 @@
 
                         <div class="form-group">
                             <label for="role">
-                                <span class="label-amharic">ቋናቋ </span>
+                                <span class="label-amharic">ቋናቋ</span>
+                                
                             </label>
                             <select id="role" name="role" required>
-                                <option value="" disabled selected>ቋናቋ ይምረጡ</option>
+                                <option value="" disabled selected>ቋናቋ ይምረጡ (Select language)</option>
                                 <option value="farmer">ኣማርኛ</option>
                                 <option value="merchant">ኦሮሚኛ</option>
                                 <option value="agent">ትግርኛ</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="role">
-                                <span class="label-amharic">የተጠቃሚ ዓይነት ይምረጡ </span>
-
+                                <span class="label-amharic">የተጠቃሚ ዓይነት ይምረጡ</span>
                             </label>
                             <select id="role" name="role" required>
                                 <option value="" disabled selected>ሚና ይምረጡ (Select Role)</option>
@@ -77,11 +76,9 @@
                             </select>
                         </div>
 
-
                         <div class="form-group">
                             <label for="phone">
                                 <span class="label-amharic">ስልክ ቁጥር ያስገቡ</span>
-
                             </label>
                             <input type="text" id="phone" name="phone" placeholder="ምሳሌ: +251 9XX XXX XXXX" required>
                         </div>
