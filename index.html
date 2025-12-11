@@ -9,9 +9,97 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
     
+    <style>
+       
+        /* Assuming these variables are defined in style.css */
+        :root {
+            --color-dark-green-login: #386641; /* Login Primary Color */
+            --color-light-green: #6a994e; /* Hover/Accent Color */
+        }
+        
+        /* Ensure the login card is the reference point for absolute positioning */
+        .login-card {
+            position: relative; 
+            /* Added padding-top to give space for the language selector */
+            padding-top: 50px !important; 
+        }
+
+        /* --- NEW: Language Dropdown Styles --- */
+        .language-dropdown-wrapper {
+            position: absolute;
+            top: 15px; /* Position from the top edge of the card */
+            right: 15px; /* Position from the right edge of the card */
+            z-index: 10;
+        }
+
+        .lang-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px; 
+            height: 30px; 
+            border-radius: 6px;
+            background-color: #ffffff; 
+            color: var(--color-dark-green-login); 
+            font-size: 14px; 
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--color-dark-green-login); 
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-options {
+            list-style: none;
+            padding: 5px 0;
+            margin: 0;
+            position: absolute;
+            top: 35px; /* Position below the display button */
+            right: 0;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 40px; 
+            display: none; /* Hidden by default */
+            z-index: 20;
+        }
+
+        .lang-options.show {
+            display: block;
+        }
+
+        .lang-options li a {
+            display: block;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--color-dark-green-login);
+            text-align: center;
+        }
+
+        .lang-options li a:hover {
+            background-color: var(--color-light-green);
+            color: #ffffff;
+        }
+    </style>
+
     <script>
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageOptions');
+            dropdown.classList.toggle('show');
+        }
+
+        function selectLanguage(langAbbr) {
+            const display = document.getElementById('currentLanguage');
+            display.textContent = langAbbr;
+            toggleLanguageDropdown(); 
+
+        }
+
         function handleLogin(event) {
-            // Prevent the default form submission (which would cause a page reload)
+
             event.preventDefault(); 
 
             const roleSelect = document.getElementById('role');
@@ -48,20 +136,18 @@
             <div class="content-overlay login-overlay">
                 
                 <div class="login-card">
-                    <form onsubmit="handleLogin(event)"> 
-
-                        <div class="form-group">
-                            <label for="role">
-                                <span class="label-amharic">ቋናቋ</span>
-                                
-                            </label>
-                            <select   required>
-                                <option value="" disabled selected>ቋናቋ ይምረጡ (Select language)</option>
-                                <option value="">ኣማርኛ</option>
-                                <option value="">ኦሮሚኛ</option>
-                                <option value="">ትግርኛ</option>
-                            </select>
+                    
+                    <div class="language-dropdown-wrapper">
+                        <div class="lang-display" id="currentLanguage" onclick="toggleLanguageDropdown()">
+                            ኣማ
                         </div>
+                        <ul class="lang-options" id="languageOptions">
+                            <li><a href="#" onclick="selectLanguage('ኣማ')">ኣማርኛ</a></li>
+                            <li><a href="#" onclick="selectLanguage('ኦሮ')"> ኦሮሚኛ</a></li>
+                            <li><a href="#" onclick="selectLanguage('ትግ')">ትግርኛ</a></li>
+                        </ul>
+                    </div>
+                    <form onsubmit="handleLogin(event)"> 
 
                         <div class="form-group">
                             <label for="role">
